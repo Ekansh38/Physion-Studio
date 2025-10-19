@@ -19,9 +19,9 @@ var mouse_positions := []
 @export var sensitivity: float = 0.8    # how much velocity is applied when thrown
 
 func _ready() -> void:
-	b_position = position
+	b_position = position 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(delta: float) -> void: # FIXME: split into separate functions
 	# Integrate
 	b_acceleration = gravity
 	b_velocity += b_acceleration * delta
