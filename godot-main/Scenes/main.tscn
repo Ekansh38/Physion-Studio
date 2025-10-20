@@ -14,21 +14,92 @@ region_rect = Rect2(-30849.73, -19373.371, 69009.95, 40076.74)
 [node name="BallParent" parent="." instance=ExtResource("1_jjgbg")]
 position = Vector2(407, 134)
 b_mass = 2.0
-restitution = 0.3
-floor_friction = 0.05
+energy_loss = 0.2
 
 [node name="BallParent2" parent="." instance=ExtResource("1_jjgbg")]
 position = Vector2(814, 268)
-scale = Vector2(0.5, 0.5)
-radius = 29.75
-restitution = 0.8
-floor_friction = 0.002
-sensitivity = 0.9
+scale = Vector2(1.1, 1.1)
+b_mass = 2.0
+radius = 65.45
+restitution = 0.4
+energy_loss = 0.3
 
 [node name="BallParent3" parent="." instance=ExtResource("1_jjgbg")]
-position = Vector2(1221, 402)
+position = Vector2(530, 428)
 scale = Vector2(0.5, 0.5)
+b_mass = 2.0
 radius = 29.75
-restitution = 0.8
-floor_friction = 0.002
+restitution = 0.7
 sensitivity = 0.9
+max_velocity = 4000.0
+energy_loss = 0.2
+
+[node name="BallParent4" parent="." instance=ExtResource("1_jjgbg")]
+position = Vector2(530, 428)
+scale = Vector2(0.5, 0.5)
+b_mass = 2.0
+radius = 29.75
+restitution = 0.7
+sensitivity = 0.9
+max_velocity = 4000.0
+energy_loss = 0.2
+
+[node name="BallParent5" parent="." instance=ExtResource("1_jjgbg")]
+position = Vector2(202, 417)
+scale = Vector2(0.5, 0.5)
+b_mass = 2.0
+radius = 29.75
+restitution = 0.7
+sensitivity = 0.9
+max_velocity = 4000.0
+energy_loss = 0.2
+
+[node name="BallParent6" parent="." instance=ExtResource("1_jjgbg")]
+position = Vector2(530, 267)
+scale = Vector2(0.5, 0.5)
+b_mass = 2.0
+radius = 29.75
+restitution = 0.7
+sensitivity = 0.9
+max_velocity = 4000.0
+energy_loss = 0.2
+
+[node name="BallParent7" parent="." instance=ExtResource("1_jjgbg")]
+position = Vector2(916, 555)
+scale = Vector2(0.5, 0.5)
+b_mass = 2.0
+radius = 29.75
+restitution = 0.7
+sensitivity = 0.9
+max_velocity = 4000.0
+energy_loss = 0.2
+
+[node name="BallParent8" parent="." instance=ExtResource("1_jjgbg")]
+position = Vector2(741, 427)
+scale = Vector2(0.5, 0.5)
+b_mass = 2.0
+radius = 29.75
+restitution = 0.7
+sensitivity = 0.9
+max_velocity = 4000.0
+energy_loss = 0.2
+
+[node name="BallParent9" parent="." instance=ExtResource("1_jjgbg")]
+position = Vector2(363, 472)
+scale = Vector2(0.5, 0.5)
+b_mass = 2.0
+radius = 29.75
+restitution = 0.7
+sensitivity = 0.9
+max_velocity = 4000.0
+energy_loss = 0.2
+
+[node name="BallParent10" parent="." instance=ExtResource("1_jjgbg")]
+position = Vector2(408, 383)
+scale = Vector2(0.5, 0.5)
+b_mass = 2.0
+radius = 29.75
+restitution = 0.7
+sensitivity = 0.9
+max_velocity = 4000.0
+energy_loss = 0.2
