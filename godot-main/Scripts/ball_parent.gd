@@ -1,4 +1,5 @@
 extends Node2D
+class_name BallParent
 
 
 # the b_ stands for ball_
@@ -9,6 +10,8 @@ var b_velocity: Vector2
 var b_acceleration: Vector2
 var is_dragged: bool = false
 var mouse_positions := []
+
+var near_balls := []
 
 @export var gravity: Vector2 = Vector2(0, 980) # pixels per second squared
 @export var b_mass: float = 1.0
@@ -82,25 +85,40 @@ func _physics_process(delta: float) -> void: # FIXME: split into separate functi
 				var last_pos: Vector2 = mouse_positions[mouse_positions.size() - 1]
 				var prev_pos: Vector2 = mouse_positions[mouse_positions.size() - 2]
 				b_velocity = ((last_pos - prev_pos) / delta) * (1.0 / b_mass) * sensitivity
+			else:
+				b_velocity = Vector2.ZERO
 			# Clear stored mouse positions
 			mouse_positions.clear()
+	
+	for ball in near_balls:
+		var to_ball: Vector2 = ball.b_position - b_position
+		var dist: float = to_ball.length()
+		var min_dist: float = radius + ball.radius
+		if dist < min_dist:
+			var overlap: float = min_dist - dist
+			var correction: Vector2 = to_ball.normalized() * (overlap / 2)
+			b_position -= correction
+			ball.b_position += correction
+
 
 
 
 	if is_dragged:
 		var mouse_pos: Vector2 = get_viewport().get_mouse_position()
+		position = mouse_pos
 		b_position = mouse_pos
 		# Store mouse positions for velocity calculation
 		mouse_positions.append(mouse_pos)
 		if mouse_positions.size() > 2:
 			mouse_positions.pop_front()
+	else:
+
+		position = b_position
 
 
 
-
-
-
-
-
-	# Update position
-	position = b_position
+func _on_other_ball_entered(area: Area2D) -> void:
+	var area_parent = area.get_parent()
+	print(area_parent.radius)
+	if area_parent is BallParent:
+		near_balls.append(area_parent)
