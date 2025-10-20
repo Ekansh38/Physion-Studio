@@ -1,6 +1,6 @@
 extends Node
 
-# Global physics manager - autoload singleton
+# Global physics manager
 # This manages physics settings that apply to all balls in the simulation
 
 var physics_settings: Resource
@@ -12,7 +12,7 @@ func _ready() -> void:
 	if ResourceLoader.exists(settings_path):
 		physics_settings = load(settings_path)
 	else:
-		# Create default settings - load the script first
+		# Create default settings
 		var physics_settings_script = load("res://Scripts/physics_settings.gd")
 		physics_settings = physics_settings_script.new()
 		# Save default settings
@@ -45,6 +45,6 @@ func get_floor_friction() -> float:
 func get_velocity_threshold() -> float:
 	return physics_settings.velocity_threshold
 
-# Function to save settings (call this if you modify settings at runtime)
+# Function to save settings (if settings are modified at runtime)
 func save_settings() -> void:
 	ResourceSaver.save(physics_settings, "res://physics_settings.tres")

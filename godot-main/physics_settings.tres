@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PhysicsSettings" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/physics_settings.gd" id="1_1"]
+
+[resource]
+script = ExtResource("1_1")
+gravity = Vector2(0, 980)
+floor_friction = 0.0
+sensitivity = 0.8
+max_throw_velocity = 3000.0
+max_velocity = 5000.0
+energy_loss = 0.1
+air_resistance = 0.0002
+velocity_threshold = 10.0

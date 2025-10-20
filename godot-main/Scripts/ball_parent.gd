@@ -71,7 +71,7 @@ func _physics_process(delta: float) -> void: # FIXME: split into separate functi
 			b_velocity.y = -b_velocity.y * restitution
 			# Only apply friction if horizontal velocity is significant
 			if abs(b_velocity.x) > 1.0:
-				b_velocity.x *= (1.0 - floor_friction) 
+				b_velocity.x *= (1.0 - PhysicsManager.get_floor_friction()) 
 
 
 
@@ -96,11 +96,11 @@ func _physics_process(delta: float) -> void: # FIXME: split into separate functi
 			if mouse_positions.size() >= 2:
 				var last_pos: Vector2 = mouse_positions[mouse_positions.size() - 1]
 				var prev_pos: Vector2 = mouse_positions[mouse_positions.size() - 2]
-				b_velocity = ((last_pos - prev_pos) / delta) * (1.0 / b_mass) * sensitivity
+				b_velocity = ((last_pos - prev_pos) / delta) * (1.0 / b_mass) * PhysicsManager.get_sensitivity()
 				
 				# Cap the velocity to max_throw_velocity
-				if b_velocity.length() > max_throw_velocity:
-					b_velocity = b_velocity.normalized() * max_throw_velocity
+				if b_velocity.length() > PhysicsManager.get_max_throw_velocity():
+					b_velocity = b_velocity.normalized() * PhysicsManager.get_max_throw_velocity()
 			else:
 				b_velocity = Vector2.ZERO
 			# Clear stored mouse positions
@@ -142,7 +142,7 @@ func _physics_process(delta: float) -> void: # FIXME: split into separate functi
 				continue
 				
 			# Calculate effective restitution with energy loss
-			var effective_restitution: float = min(restitution, ball.restitution) * (1.0 - energy_loss)
+			var effective_restitution: float = min(restitution, ball.restitution) * (1.0 - PhysicsManager.get_energy_loss())
 			var j: float = -(1 + effective_restitution) * velocity_along_normal
 			j /= (1.0 / b_mass + 1.0 / ball.b_mass)
 			
